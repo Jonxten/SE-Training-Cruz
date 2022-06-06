@@ -1,0 +1,83 @@
+table {
+  width: 100%;
+}
+
+.table-task{
+  margin: 1% 5% 0 5%;
+}
+
+.mat-flat-button {
+  color: white;
+}
+
+tr.mat-row:nth-child(odd) {
+  background-color: rgba(99, 99, 99, 0.1);
+}
+
+.mat-column-status
+{
+  padding-right: 50px;
+}
+
+.mat-column-taskName,
+.mat-column-tags,
+.mat-column-taskDescription,
+.mat-column-status,
+.mat-column-dateCreated,
+.mat-column-dateModified,
+.mat-column-dateCompleted,
+.mat-column-action {
+  text-align: left;
+}
+
+
+
+button {
+  margin: 5px;
+}
+
+td {
+  text-align: left;
+}
+
+td a {
+  text-decoration: underline;
+}
+
+td a:hover {
+  cursor: pointer;
+  color: #00ed64;
+  text-decoration: underline;
+}
+.boot-border {
+  border-bottom: 1px dashed rgba(99, 99, 99, 0.5);
+}
+
+.mat-icon {
+  height: 32px !important;
+  width: 32px !important;
+  font-size: 32px !important;
+  line-height: 32px !important;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+a{
+  margin-left: 5px;
+}
+
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.d-flex > h6 {
+  margin: auto 0 auto 0;
+}
+
+.mat-paginator{
+  justify-content: right;
+}

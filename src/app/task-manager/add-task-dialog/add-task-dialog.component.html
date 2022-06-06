@@ -1,0 +1,90 @@
+<!-- Start of Dialog Box Title -->
+<h3 mat-dialog-title>Add Task</h3>
+<!-- End of Dialog Box Title -->
+
+<!-- Start Div Dialog Box Content -->
+<mat-dialog-content>
+  <div class="toop-border"></div>
+  <form [formGroup]="addTaskForm" class="form-container" (ngSubmit)="onAdd()">
+
+    <!-- Task Name Field -->
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Task Name</mat-label>
+      <input matInput formControlName="taskName" name="taskName" />
+      <mat-error *ngIf="addTaskForm.controls['taskName'].hasError('required')">Name is Required</mat-error>
+    </mat-form-field>
+    <!-- End of Task Name Field -->
+
+    <!-- Date Created Field -->
+    <mat-form-field appearance="outline">
+      <mat-label>Date Created</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateCreated" name="dateCreated">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="addTaskForm.controls['dateCreated'].hasError('required')">Date is Required</mat-error>
+    </mat-form-field>
+    <!-- End of Date Created Field -->
+
+     <!-- Task Description Field -->
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Task Description</mat-label>
+      <textarea
+        matInput
+        formControlName="taskDescription"
+        name="taskDescription"
+      ></textarea>
+      <mat-error *ngIf="addTaskForm.controls['taskDescription'].hasError('required')">Description is Required</mat-error>
+    </mat-form-field>
+    <!-- End of Task Description Field -->
+
+    <!-- Tags Field -->
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>Tags</mat-label>
+        <input matInput formControlName="tags" name="tags" />
+        <mat-error *ngIf="addTaskForm.controls['tags'].hasError('required')">Tags is Required</mat-error>
+      </mat-form-field>
+    <!-- End of Tags Field -->
+    <br>
+    <br>
+    <!-- Tags Settings -->
+    <mat-radio-group aria-label="tagSettings" formControlName="tagSettings">
+      <mat-label>Add Tag to database?</mat-label><br>
+        <mat-radio-button value="1">Yes</mat-radio-button><br>
+        <mat-radio-button value="2">No</mat-radio-button>
+        <mat-error *ngIf="addTaskForm.controls['tagSettings'].hasError('required')">You must choose one option</mat-error>
+    </mat-radio-group>
+    <!-- End of Tags Settings -->
+
+    <!-- Date Checkbox -->
+    <section class="dateCheckboxSection">
+      <br><mat-checkbox class="dateCheckbox" formControlName="dateSettings">Select Date Today</mat-checkbox><br>
+      <mat-checkbox class="dateCheckbox" formControlName="dateSettings">Select a Later Date</mat-checkbox>
+      <mat-hint> (The task will be created at the date you selected)</mat-hint>
+      <mat-error *ngIf="addTaskForm.controls['dateSettings'].hasError('required')">You must choose one option</mat-error>
+    </section>
+    <!-- End of Date Checkbox Field -->
+
+    <button type="submit" hidden #submitButton></button>
+  </form>
+  <div class="boot-border"></div>
+</mat-dialog-content>
+<!-- End of Div Dialog Box Content -->
+
+<!-- Dialog Box Cancel and Save Buttons -->
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close color="warn">Cancel</button>
+  <button
+    mat-flat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    color="primary"
+    class="text-white"
+    
+    type="button"
+    [disabled]="!addTaskForm.valid"
+    (click)="submitButton.click()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
+<!-- End of Dialog Box Cancel and Update Buttons -->

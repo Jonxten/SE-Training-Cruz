@@ -1,0 +1,101 @@
+<!-- Start of Dialog Box Title -->
+<h3 mat-dialog-title>Update Task</h3>
+<!-- End of Dialog Box Title -->
+
+<!-- Start Div Dialog Box Content -->
+<mat-dialog-content>
+  <div class="toop-border"></div>
+  <form [formGroup]="updateTaskForm" (ngSubmit)="onUpdate()">
+
+    <!-- Task Name Field -->
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Task Name</mat-label>
+      <input matInput formControlName="taskName" name="taskName" />
+      <mat-error *ngIf="updateTaskForm.controls['taskName'].hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+    <!-- End of Task Name Field -->
+
+    <!-- Date Created Field -->
+    <mat-form-field appearance="outline">
+      <mat-label>Date Modified</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateModified" name="dateModified">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- End of Date Created Field -->
+
+     <!-- Task Description Field -->
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Task Description</mat-label>
+      <textarea
+        matInput
+        formControlName="taskDescription"
+        name="taskDescription"
+      ></textarea>
+      <mat-error *ngIf="updateTaskForm.controls['taskDescription'].hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+    <!-- End of Task Description Field -->
+
+    <!-- Tags Field -->
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>Tags</mat-label>
+        <input matInput formControlName="tags" name="tags" />
+      </mat-form-field>
+      <mat-error *ngIf="updateTaskForm.controls['tags'].hasError('required')">Name is required</mat-error>
+    <!-- End of Tags Field -->
+    
+    <!-- Tags Settings -->
+    <mat-radio-group aria-label="tagSettings">
+      <mat-label>Add Tag to Task?</mat-label><br>
+        <mat-radio-button value="1">Yes</mat-radio-button><br>
+        <mat-radio-button value="2">No</mat-radio-button>
+    </mat-radio-group>
+    <!-- End of Tags Settings -->
+    <br>
+    <br>
+
+    <div class="d-flex">
+      <!-- Tags Settings 2 -->
+      <mat-radio-group aria-label="tagSettings2">
+          <mat-label>Add Tag to Database?</mat-label><br>
+          <mat-radio-button value="1">Yes</mat-radio-button><br>
+          <mat-radio-button value="2">No</mat-radio-button>
+      </mat-radio-group>
+      <!-- End of Tags Settings 2-->
+      
+      <!-- Task Status -->
+      <mat-form-field appearance="fill">
+          <mat-label>Task Status</mat-label>
+          <mat-select required>
+            <mat-option value="new">New</mat-option>
+            <mat-option value="ongoing">Ongoing</mat-option>
+            <mat-option value="completed">Completed</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <!-- End of Task Status -->
+    </div>
+
+    <button type="submit" hidden #submitButton></button>
+  </form>
+  <div class="boot-border"></div>
+</mat-dialog-content>
+<!-- End of Div Dialog Box Content -->
+
+<!-- Dialog Box Cancel and Save Buttons -->
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close color="warn">Cancel</button>
+  <button
+    mat-flat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    color="primary"
+    class="text-white"
+    
+    type="button"
+    (click)="submitButton.click()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
+<!-- End of Dialog Box Cancel and Update Buttons -->
+

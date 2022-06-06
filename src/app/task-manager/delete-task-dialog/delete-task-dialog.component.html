@@ -1,0 +1,15 @@
+<!-- Start of Close Button -->
+<span mat-dialog-close role="button" class="dot" align="end"
+  ><a class="close-button">&times;</a></span
+>
+<!-- End of Close Button -->
+
+<!-- Start of Message Content -->
+<br>
+<mat-dialog-content class="mat-typography">
+  <h4 class="d-flex justify-content-center text-center mt-3">Are you sure you want to Delete this task?</h4>
+</mat-dialog-content>
+<br>
+<button mat-raised-button color="warn" mat-dialog-close="close" (click)="onDeleteSuccess()">Delete</button>
+<button mat-raised-button color="primary" mat-dialog-close="close">Close</button>
+<!-- End of Message Content -->
