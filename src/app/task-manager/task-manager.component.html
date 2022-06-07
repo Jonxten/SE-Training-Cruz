@@ -1,17 +1,19 @@
-   <!-- Start of Filter -->
-   <div class="d-flex justify-content-center mx-5 px-4">
-    <mat-form-field appearance="standard" class ="search-form-field" floatLabel="never">
-      <mat-label>Filter</mat-label>
-      <input matInput [(ngModel)]="searchTask" placeholder="Enter a Task to search">
-    </mat-form-field>
-  </div>
-  <!-- End of Filter -->
+ <!-- Start of Filter -->
+ <div class="d-flex mx-5 px-5">
+  <mat-form-field appearance="standard" class ="search-form-field" floatLabel="never">
+    <mat-label>Filter</mat-label>
+    <input matInput [(ngModel)]="searchTask" placeholder="Enter a Task to search">
+  </mat-form-field>
+</div>
+<!-- End of Filter -->
   
   <!-- Start of Interface -->
   <div class="mat-elevation-z3 table-task">
 
-    <!-- Start of Add Dialog Button -->
+    <!-- Start of Upper Table -->
     <div class="d-flex bg-white boot-border">
+
+      <!-- Add Task Button -->
       <button
         mat-icon-button
         matTooltip="Add Task"
@@ -22,14 +24,20 @@
       </button>
       <h6>Add Task</h6>
       <span class="flex-spacer"></span>
+      <!-- End of Add Task Button -->
 
-      <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-      </mat-paginator>
+      <!-- Start of Paginator -->
+      <mat-paginator
+        [length]="totalPosts"
+        [pageSizeOptions]="pageSizeOptions"
+        showFirstLastButtons
+        [pageSize]="postsPerPage"
+        (page)="onChangedPage($event)"
+      ></mat-paginator>
+      <!-- Start of Paginator -->
+
     </div>
-    <!-- End of Add Dialog Button -->
+    <!-- End of Upper Table -->
 
     <!-- Start of Table -->
     <table mat-table [dataSource]="dataSource | filter: searchTask">
